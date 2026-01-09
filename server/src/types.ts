@@ -33,3 +33,8 @@ type ServerMessage =
   | { type: "ROOM_LIST"; rooms: Room[] }
   | { type: "ERROR"; message: string };
 
+  
+import WebSocket from "ws";
+export interface CustomWebSocket extends WebSocket {
+  socketId?: string;
+}

@@ -45,6 +45,6 @@ export function handleMessage(ws: WebSocket, data: WebSocket.RawData){
     }
 }
 
-export function handleDisconnect(ws : WebSocket){
+export function handleDisconnect(ws: WebSocket){
 
 }

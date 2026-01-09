@@ -1,11 +1,8 @@
-import WebSocket from "ws"
-import { rooms, users } from "../state";
-export const handleJoinRoom = (ws : WebSocket, roomId: string) => {
-    const socketId = (ws as any).socketId
-    if(!socketId) return;
-
-    const sender = [...users.values()].find(user => user.socketId == socketId);
-    if(!sender) return;
+import { getSender, rooms, users } from "../state";
+import { CustomWebSocket } from "../types";
+export const handleJoinRoom = (ws: CustomWebSocket, roomId: string) => {
+    const sender = getSender(ws);
+    if (!sender) return;
 
     const room = rooms.get(roomId);
     

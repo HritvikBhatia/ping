@@ -1,12 +1,11 @@
-import WebSocket from "ws"
 import crypto from "crypto"
-import { User } from "../types"
+import { CustomWebSocket, User } from "../types"
 import { sockets, users } from "../state";
 
-export const handleJoin = (ws: WebSocket, username: string) => {
+export const handleJoin = (ws: CustomWebSocket, username: string) => {
     const socketId = crypto.randomUUID();
     
-    (ws as any).socketId = socketId
+    ws.socketId = socketId
     
     sockets.set(socketId, ws);
 

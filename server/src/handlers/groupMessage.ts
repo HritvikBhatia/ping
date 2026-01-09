@@ -1,14 +1,10 @@
-import WebSocket from "ws";
 import crypto from "crypto";
-import { rooms, sockets, users } from "../state";
-import { Message } from "../types";
+import { getSender, rooms, sockets, users } from "../state";
+import { CustomWebSocket, Message } from "../types";
 
-export const handleGroupMessage = (ws: WebSocket, roomId: string, content: string) => {
-  const socketId = (ws as any).socketId;
-  if (!socketId) return;
-
-  const sender = [...users.values()].find((user) => user.socketId == socketId);
-  if (!sender) return;
+export const handleGroupMessage = (ws: CustomWebSocket, roomId: string, content: string) => {
+  const sender = getSender(ws);
+    if (!sender) return;
 
   const room = rooms.get(roomId);
 
