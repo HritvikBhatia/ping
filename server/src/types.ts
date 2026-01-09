@@ -19,7 +19,7 @@ export type Room = {
   members: string[];
 };
 
-type ClientMessage =
+export type ClientMessage =
   | { type: "JOIN"; username: string }
   | { type: "PRIVATE_MESSAGE"; toUserId: string; content: string }
   | { type: "GROUP_MESSAGE"; roomId: string; content: string }
